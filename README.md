@@ -15,5 +15,5 @@
 ```plaintext
 git config user.name <name>
 git config user.email <email>
-git remote set-url origin https://<username>@PAT@github.com/treehog2/iina-absave-plugin.git
+git remote set-url origin https://<username>:PAT@github.com/treehog2/iina-absave-plugin.git
 ```
