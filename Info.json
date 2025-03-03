@@ -5,7 +5,7 @@
   "description": "Description here",
   "author": {
     "name": "IINA Developers",
-    "email": null,
+    "email": "doesnotexist@doesnotexist.doesnotexist",
     "url": "https://iina.io"
   },
   "entry": "src/index.js",
