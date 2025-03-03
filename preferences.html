@@ -1,0 +1,44 @@
+<body>
+    <div class="pref-section">
+      FFmpeg path:
+      <div style="margin-top: 2px">
+        <input
+          type="text"
+          data-pref-key="ffmpeg_path"
+          placeholder="ffmpeg"
+          style="width: 100%; margin-top: 2px"
+        />
+      </div>
+      <p class="small secondary pref-help">
+        Path to the FFmpeg executable. Defaults to "ffmpeg" if left empty.
+      </p>
+    </div>
+    <div class="pref-section">
+      Save directory:
+      <div style="margin-top: 2px">
+        <input
+          type="text"
+          data-pref-key="save_dir"
+          placeholder="Leave empty for same directory as the video file"
+          style="width: 100%; margin-top: 2px"
+        />
+      </div>
+      <p class="small secondary pref-help">
+        Directory to save downloaded files. Leave empty to use the default location.
+      </p>
+    </div>
+    <div class="pref-section">
+        Max file name length:
+        <div style="margin-top: 2px">
+          <input
+            type="number"
+            data-pref-key="max_file_name_length"
+            placeholder="Leave empty for no limit"
+            style="width: 100%; margin-top: 2px"
+          />
+        </div>
+        <p class="small secondary pref-help">
+          Maximum length for file names. Leave empty or set to 0 for no truncation.
+        </p>
+      </div>
+  </body>

@@ -1,8 +1,8 @@
 {
   "name": "Save AB Loop",
   "identifier": "com.example.iina-plugin-template",
-  "version": "1.0.0",
-  "description": "Description here",
+  "version": "0.1.0",
+  "description": "Save AB loops as individual files",
   "author": {
     "name": "IINA Developers",
     "email": "doesnotexist@doesnotexist.doesnotexist",
@@ -15,6 +15,10 @@
     "network-request"
   ],
   "allowedDomains": ["*"],
-  "preferencesPage": "pref.html",
-  "preferenceDefaults": {}
+  "preferencesPage": "preferences.html",
+  "preferenceDefaults": {
+    "ffmpeg_path": "/usr/local/bin/ffmpeg",
+    "save_dir": null,
+    "max_file_name_length": null
+  }
 }
