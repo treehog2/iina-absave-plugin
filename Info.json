@@ -1,12 +1,12 @@
 {
   "name": "Save AB Loop",
-  "identifier": "com.example.iina-plugin-template",
+  "identifier": "dev.dev.iina-absave-plugin",
   "version": "0.1.0",
   "description": "Save AB loops as individual files",
   "author": {
-    "name": "IINA Developers",
-    "email": "doesnotexist@doesnotexist.doesnotexist",
-    "url": "https://iina.io"
+    "name": "N/A",
+    "email": "N/A",
+    "url": "https://github.com/treehog2/iina-absave-plugin"
   },
   "entry": "src/index.js",
   "permissions": [
