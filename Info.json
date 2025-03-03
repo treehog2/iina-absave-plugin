@@ -1,0 +1,20 @@
+{
+  "name": "Save AB Loop",
+  "identifier": "com.example.iina-plugin-template",
+  "version": "1.0.0",
+  "description": "Description here",
+  "author": {
+    "name": "IINA Developers",
+    "email": null,
+    "url": "https://iina.io"
+  },
+  "entry": "src/index.js",
+  "permissions": [
+    "show-osd",
+    "file-system",
+    "network-request"
+  ],
+  "allowedDomains": ["*"],
+  "preferencesPage": "pref.html",
+  "preferenceDefaults": {}
+}
