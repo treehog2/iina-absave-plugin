@@ -12,6 +12,8 @@
 
 ## Local Git Development
 
-`git config user.name <name>`
-`git config user.email <email>`
-`git remote set-url origin https://<username>@gPAT@github.com/treehog2/iina-absave-plugin.git`
+```plaintext
+git config user.name <name>
+git config user.email <email>
+git remote set-url origin https://<username>@PAT@github.com/treehog2/iina-absave-plugin.git
+```
