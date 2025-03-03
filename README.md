@@ -20,7 +20,7 @@ Note: this plugin is currently only usable in development mode. Not directly imp
 ## Plugin Settings
 
 - `ffmpeg_path`: path for the ffmpeg executable.
-- `save_dir`: change where loop files are saved. defaults to the same directory as the video file if left blank.
+- `save_dir`: change where loop files are saved. defaults to the same directory as the current media file if left blank.
 - `max_file_name_length`: if set, will truncate the output file name to this value.
 
 
@@ -35,3 +35,4 @@ Note: this plugin is currently only usable in development mode. Not directly imp
 - [x] Send confirmation messages to user in case of errors or success.
 - [ ] Support importing plugin directly from github.
 - [ ] Figure out why `ffmpeg` executable is not accessible to the plugin.
+- [ ] Test and handle case when there are multiple player windows e.g. which window does the plugin run on?
