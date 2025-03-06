@@ -1,13 +1,13 @@
-const {console, global} = iina
+const {console, global, preferences} = iina
 
 // Function to open a new IINA player window with the specified URL
 function openNewPlayerWithUrl(url) {
   // Create a new player instance with the provided URL
   const playerID = global.createPlayerInstance({
       url: url,
-      disableWindowAnimation: true, // Optional: Disable window resizing animation
-      disableUI: true,              // Optional: Hide the titlebar and on-screen control
-      enablePlugins: false          // Optional: Disable plugins for this instance
+      disableWindowAnimation: true,                                         // Optional: Disable window resizing animation
+      disableUI: ! preferences.get("show_ui_in_loop_players"),              // Optional: Hide the titlebar and on-screen control
+      enablePlugins: false                                                  // Optional: Disable plugins for this instance
   });
 
   // You can store the player instance if you need to manage it later

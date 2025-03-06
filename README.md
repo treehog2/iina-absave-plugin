@@ -22,6 +22,7 @@ Note: this plugin is currently only usable in development mode. Not directly imp
 - `ffmpeg_path`: path for the ffmpeg executable.
 - `save_dir`: change where loop files are saved. defaults to the same directory as the current media file if left blank.
 - `max_file_name_length`: if set, will truncate the output file name to this value.
+- `show_ui_in_loop_players`: if checked, will show the ui when opening loop files.
 
 
 # Development Tips
