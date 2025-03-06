@@ -1,4 +1,4 @@
-const { menu, mpv, utils, core, console, file, input, preferences } = iina;
+const { menu, mpv, utils, core, console, global, file, input, preferences } = iina;
 
 // Function to convert file URL to a standard path
 function fileURLToPath(url) {
@@ -11,7 +11,7 @@ function logAndAlert(msg, isError = false) {
   } else {
     console.log(msg);
   }
-  utils.ask(msg);
+  return utils.ask(msg);
 }
 
 
@@ -41,13 +41,17 @@ async function createOutputPath(inputPath, start, end) {
   return `${directory}/${newFileName}`;
 }
 
+function openFile(filePath) {
+  console.log(`Opening file: ${filePath}`);
+  global.postMessage("open-new-player", { url: filePath });
+}
 
 // Define the action to save the A-B loop
 async function saveABLoop() {
   const ffmpegPath = preferences.get("ffmpeg_path");
   // Get the current A and B loop points
-  const loopStart = mpv.getNumber('ab-loop-a');
-  const loopEnd = mpv.getNumber('ab-loop-b');
+  let loopStart = mpv.getNumber('ab-loop-a');
+  let loopEnd = mpv.getNumber('ab-loop-b');
   console.log(`core.status.url: ${core.status.url}`);
   console.log(`A-B loop points: ${loopStart} - ${loopEnd}`);
 
@@ -63,6 +67,12 @@ async function saveABLoop() {
     const msg = 'Both A-B loop points are not properly set.';
     logAndAlert(msg, true);
     return;
+  }
+
+  if (loopStart >= loopEnd) {
+    const temp = loopStart;
+    loopStart = loopEnd;
+    loopEnd = temp;
   }
 
   const fileURL = core.status.url;
@@ -95,8 +105,11 @@ async function saveABLoop() {
   try {
     const { status, stdout, stderr } = await utils.exec(ffmpegPath, ffmpegArgs);
     if (status === 0) {
-      const msg = `A-B loop saved successfully to ${outputPath}`;
-      logAndAlert(msg, false);
+      const msg = `A-B loop saved successfully to\n\n${outputPath}\n\nOpen file in new window?`;
+      const shouldOpen = logAndAlert(msg, false);
+      if (shouldOpen) {
+        openFile(outputPath);
+      }
       // Does not work for some reason but good intention
       // Source: https://docs.iina.io/interfaces/IINA.API.File.html#revealInFinder
       // file.revealInFinder(outputPath);
@@ -122,4 +135,9 @@ input.onKeyDown('Alt+k', async () => {
   console.log('Alt+k key pressed');
   saveABLoop();
   return true;
+});
+
+global.onMessage("loop-file", () => {
+  console.log(`set-file-loop message received`);
+  mpv.set("loop-file", true);
 });

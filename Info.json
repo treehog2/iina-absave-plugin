@@ -9,6 +9,7 @@
     "url": "https://github.com/treehog2/iina-absave-plugin"
   },
   "entry": "src/index.js",
+  "globalEntry": "src/global.js",
   "permissions": [
     "show-osd",
     "file-system",
