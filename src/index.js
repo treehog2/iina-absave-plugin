@@ -1,5 +1,7 @@
 const { menu, mpv, utils, core, console, global, file, input, preferences } = iina;
 
+const DEFAULT_DIR_NAME = 'ab_loops';
+
 // Function to convert file URL to a standard path
 function fileURLToPath(url) {
     return decodeURIComponent(url.replace('file://', ''));
@@ -22,8 +24,15 @@ async function createOutputPath(inputPath, start, end) {
   start = Math.round(start, 2);
   end = Math.round(end, 2);
 
-  // Get the directory
-  const directory = preferences.get("save_dir") || parts.slice(0, -1).join('/');
+  // Get the directory from preferences or build a default one
+  const directory = preferences.get("save_dir") || parts.slice(0, -1).join('/') + DEFAULT_DIR_NAME;
+
+  try {
+    const { status, stderr } = await utils.exec("/bin/mkdir", ["-p", directory]);
+    if (status !== 0) throw new Error(`mkdir failed: ${stderr}`);
+  } catch (e) {
+    logAndAlert(`Failed to create directory: ${directory}. Error: ${e}`, true);
+  }
   console.log(`directory: ${directory}`);
   // Split the filename into name and extension
   const lastDotIndex = fileName.lastIndexOf('.');
